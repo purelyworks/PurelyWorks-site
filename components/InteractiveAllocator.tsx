@@ -70,7 +70,7 @@ export const InteractiveAllocator: React.FC = () => {
           {/* Left Control Panel */}
           <div className="lg:col-span-4 p-8 bg-slate-900 text-white flex flex-col justify-between">
             <div>
-              <h3 className="text-xl font-bold mb-6 text-indigo-400">Select a Scenario</h3>
+              <h3 className="text-xl font-bold mb-6" style={{ color: 'var(--bright-lavender)' }}>Select a Scenario</h3>
               <div className="space-y-3">
                 {SCENARIOS.map((scenario, idx) => (
                   <button
@@ -78,9 +78,10 @@ export const InteractiveAllocator: React.FC = () => {
                     onClick={() => setActiveScenarioIndex(idx)}
                     className={`w-full text-left px-4 py-4 rounded-xl transition-all duration-200 flex items-center justify-between group ${
                       activeScenarioIndex === idx 
-                        ? 'bg-indigo-600 text-white shadow-lg ring-2 ring-indigo-400 ring-offset-2 ring-offset-slate-900' 
+                        ? 'text-white shadow-lg ring-2 ring-offset-2 ring-offset-slate-900' 
                         : 'bg-slate-800 text-slate-400 hover:bg-slate-700'
                     }`}
+                    style={activeScenarioIndex === idx ? { backgroundColor: 'var(--ocean-blue)' } : undefined}
                   >
                     <div>
                       <span className="text-xs font-bold uppercase tracking-wider opacity-70 block mb-1">{scenario.month}</span>
@@ -110,19 +111,19 @@ export const InteractiveAllocator: React.FC = () => {
               <ResponsiveContainer width="100%" height="100%">
                 <RadarChart cx="50%" cy="50%" outerRadius="70%" data={chartData}>
                   <PolarGrid stroke="#e2e8f0" />
-                  <PolarAngleAxis dataKey="subject" tick={{ fill: '#64748b', fontSize: 12, fontWeight: 700 }} />
+                  <PolarAngleAxis dataKey="subject" tick={{ fill: 'var(--ocean-blue)', fontSize: 12, fontWeight: 700 }} />
                   <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
                   <Radar
                     name="Allocation"
                     dataKey="A"
-                    stroke="#4f46e5"
+                    stroke={'var(--ocean-blue)'}
                     strokeWidth={3}
-                    fill="#6366f1"
-                    fillOpacity={0.4}
+                    fill={'var(--bright-lavender)'}
+                    fillOpacity={0.35}
                   />
                   <Tooltip 
                     contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)' }}
-                    itemStyle={{ color: '#4f46e5', fontWeight: 'bold' }}
+                    itemStyle={{ color: 'var(--ocean-blue)', fontWeight: 'bold' }}
                   />
                 </RadarChart>
               </ResponsiveContainer>
@@ -139,26 +140,26 @@ export const InteractiveAllocator: React.FC = () => {
                 </p>
                 
                 <div className="space-y-4 pt-4 border-t border-slate-200">
-                    <div className={`flex items-center justify-between p-3 rounded-lg ${currentScenario.allocation.recruiting > 40 ? 'bg-blue-50 border border-blue-100' : 'opacity-50 grayscale'}`}>
-                        <div className="flex items-center gap-3">
-                            <Users size={18} className="text-blue-600" />
-                            <span className="font-medium text-slate-700">Recruiting</span>
-                        </div>
-                        <div className="font-bold text-slate-900">{currentScenario.allocation.recruiting}%</div>
+                    <div className={`flex items-center justify-between p-3 rounded-lg ${currentScenario.allocation.recruiting > 40 ? 'border' : 'opacity-50 grayscale'}`} style={currentScenario.allocation.recruiting > 40 ? { backgroundColor: 'rgba(27,138,191,0.06)', borderColor: 'rgba(27,138,191,0.12)' } : undefined}>
+                      <div className="flex items-center gap-3">
+                        <Users size={18} style={{ color: 'var(--ocean-blue)' }} />
+                        <span className="font-medium text-slate-700">Recruiting</span>
+                      </div>
+                      <div className="font-bold text-slate-900">{currentScenario.allocation.recruiting}%</div>
                     </div>
-                    <div className={`flex items-center justify-between p-3 rounded-lg ${currentScenario.allocation.proposals > 40 ? 'bg-purple-50 border border-purple-100' : 'opacity-50 grayscale'}`}>
-                        <div className="flex items-center gap-3">
-                            <FileText size={18} className="text-purple-600" />
-                            <span className="font-medium text-slate-700">Proposals</span>
-                        </div>
-                        <div className="font-bold text-slate-900">{currentScenario.allocation.proposals}%</div>
+                    <div className={`flex items-center justify-between p-3 rounded-lg ${currentScenario.allocation.proposals > 40 ? 'border' : 'opacity-50 grayscale'}`} style={currentScenario.allocation.proposals > 40 ? { backgroundColor: 'rgba(186,145,242,0.08)', borderColor: 'rgba(186,145,242,0.14)' } : undefined}>
+                      <div className="flex items-center gap-3">
+                        <FileText size={18} style={{ color: 'var(--bright-lavender)' }} />
+                        <span className="font-medium text-slate-700">Proposals</span>
+                      </div>
+                      <div className="font-bold text-slate-900">{currentScenario.allocation.proposals}%</div>
                     </div>
-                    <div className={`flex items-center justify-between p-3 rounded-lg ${currentScenario.allocation.development > 40 ? 'bg-emerald-50 border border-emerald-100' : 'opacity-50 grayscale'}`}>
-                         <div className="flex items-center gap-3">
-                            <Code2 size={18} className="text-emerald-600" />
-                            <span className="font-medium text-slate-700">Development</span>
-                        </div>
-                        <div className="font-bold text-slate-900">{currentScenario.allocation.development}%</div>
+                    <div className={`flex items-center justify-between p-3 rounded-lg ${currentScenario.allocation.development > 40 ? 'border' : 'opacity-50 grayscale'}`} style={currentScenario.allocation.development > 40 ? { backgroundColor: 'rgba(119,217,171,0.06)', borderColor: 'rgba(119,217,171,0.12)' } : undefined}>
+                       <div className="flex items-center gap-3">
+                        <Code2 size={18} style={{ color: 'var(--celadon)' }} />
+                        <span className="font-medium text-slate-700">Development</span>
+                      </div>
+                      <div className="font-bold text-slate-900">{currentScenario.allocation.development}%</div>
                     </div>
                 </div>
             </div>

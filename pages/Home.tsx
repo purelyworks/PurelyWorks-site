@@ -37,8 +37,8 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
 
          <div className="relative z-10 max-w-5xl mx-auto text-center">
             <ScrollReveal>
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900 text-white text-xs font-bold tracking-widest uppercase mb-8">
-                    <Zap size={12} className="text-yellow-400" />
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-white text-xs font-bold tracking-widest uppercase mb-8" style={{ backgroundColor: 'var(--sunlit-clay)' }}>
+                    <Zap size={12} style={{ color: 'var(--sunlit-clay)' }} />
                     The Future of Work
                 </div>
             </ScrollReveal>
@@ -46,7 +46,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
             <ScrollReveal delay={100}>
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-slate-900 tracking-tighter mb-8 leading-tight">
                     Build Faster.<br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-emerald-500">
+                    <span className="text-transparent bg-clip-text" style={{ backgroundImage: 'linear-gradient(to right, var(--ocean-blue), var(--bright-lavender), var(--celadon))' }}>
                         Scale Smarter.
                     </span>
                 </h1>
@@ -63,7 +63,8 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                     <button 
                         onClick={() => onNavigate('FLEX')}
-                        className="w-full sm:w-auto px-8 py-5 bg-indigo-600 text-white rounded-2xl font-bold text-lg hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-200 flex items-center justify-center gap-2 group"
+                        className="w-full sm:w-auto px-8 py-5 text-white rounded-2xl font-bold text-lg transition-all shadow-xl flex items-center justify-center gap-2 group"
+                        style={{ backgroundColor: 'var(--ocean-blue)', boxShadow: '0 10px 25px -10px rgba(27,138,191,0.25)' }}
                     >
                         Start with Purely Flex <ArrowRight className="group-hover:translate-x-1 transition-transform" />
                     </button>
@@ -93,10 +94,10 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                         className="group cursor-pointer relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-50 to-white border border-slate-200 p-10 hover:shadow-2xl transition-all duration-500 h-full flex flex-col"
                     >
                         <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
-                            <Layers size={140} className="text-indigo-600" />
+                            <Layers size={140} style={{ color: 'var(--ocean-blue)' }} />
                         </div>
                         <div className="relative z-10 flex-grow">
-                            <div className="w-16 h-16 bg-indigo-600 text-white rounded-2xl flex items-center justify-center mb-8 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                            <div className="w-16 h-16 text-white rounded-2xl flex items-center justify-center mb-8 shadow-lg group-hover:scale-110 transition-transform duration-300" style={{ backgroundColor: 'var(--ocean-blue)' }}>
                                 <Layers size={32} />
                             </div>
                             <h3 className="text-3xl font-bold text-slate-900 mb-4">Purely Flex</h3>
@@ -104,7 +105,7 @@ export const Home: React.FC<HomeProps> = ({ onNavigate }) => {
                                 <strong>The Intelligent Starting Point.</strong> Access to Recruiting, Proposals, and Dev in one flexible subscription. Rotate bandwidth as priorities shift.
                             </p>
                         </div>
-                        <div className="flex items-center text-indigo-600 font-bold gap-2 group-hover:gap-4 transition-all mt-auto pt-6 border-t border-slate-100">
+                        <div className="flex items-center font-bold gap-2 group-hover:gap-4 transition-all mt-auto pt-6 border-t border-slate-100" style={{ color: 'var(--ocean-blue)' }}>
                             Explore Flex Model <ArrowRight size={20} />
                         </div>
                     </div>

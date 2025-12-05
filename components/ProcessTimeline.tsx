@@ -5,31 +5,36 @@ const steps = [
     month: 'Month 1',
     title: 'Readiness Assessment',
     desc: 'Understanding where automation can create the biggest wins.',
-    color: 'bg-slate-200'
+    dotColorVar: 'var(--celadon)',
+    badgeColorVar: 'var(--celadon)'
   },
   {
     month: 'Month 2',
     title: 'Development Focus',
     desc: 'Building workflow automation that saves your team 10 hours per week.',
-    color: 'bg-emerald-100'
+    dotColorVar: 'var(--ocean-blue)',
+    badgeColorVar: 'var(--ocean-blue)'
   },
   {
     month: 'Month 3',
     title: 'Recruiting Priority',
     desc: 'Filling critical position while development continues at lighter intensity.',
-    color: 'bg-blue-100'
+    dotColorVar: 'var(--ocean-blue)',
+    badgeColorVar: 'var(--ocean-blue)'
   },
   {
     month: 'Month 4',
     title: 'Proposal Crunch',
     desc: 'Major bid season requires full team attention for 3 weeks.',
-    color: 'bg-purple-100'
+    dotColorVar: 'var(--bright-lavender)',
+    badgeColorVar: 'var(--bright-lavender)'
   },
   {
     month: 'Month 5',
     title: 'Back to Development',
     desc: 'CRM integration project picks up where we left off.',
-    color: 'bg-emerald-100'
+    dotColorVar: 'var(--celadon)',
+    badgeColorVar: 'var(--celadon)'
   }
 ];
 
@@ -51,12 +56,15 @@ export const ProcessTimeline: React.FC = () => {
               <div key={idx} className={`relative flex items-center ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                 
                 {/* Dot */}
-                <div className="absolute left-8 md:left-1/2 w-4 h-4 bg-indigo-600 rounded-full border-4 border-white shadow transform -translate-x-1/2 z-10"></div>
+                <div
+                  className="absolute left-8 md:left-1/2 w-4 h-4 rounded-full border-4 border-white shadow transform -translate-x-1/2 z-10"
+                  style={{ backgroundColor: step.dotColorVar }}
+                ></div>
 
                 {/* Content Box */}
                 <div className={`ml-20 md:ml-0 md:w-1/2 ${idx % 2 === 0 ? 'md:pr-12 text-left md:text-right' : 'md:pl-12 text-left'}`}>
-                  <div className={`p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow ${step.color}`}>
-                    <span className="text-xs font-bold uppercase tracking-widest text-slate-500 mb-1 block">{step.month}</span>
+                  <div className={`p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-shadow`}>
+                    <span className="text-xs font-bold uppercase tracking-widest mb-1 block" style={{ color: step.badgeColorVar }}>{step.month}</span>
                     <h3 className="text-lg font-bold text-slate-900 mb-2">{step.title}</h3>
                     <p className="text-slate-700 text-sm leading-relaxed">{step.desc}</p>
                   </div>

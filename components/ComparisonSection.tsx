@@ -13,9 +13,9 @@ export const ComparisonSection: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
           
           {/* Traditional */}
-          <div className="bg-slate-800 rounded-3xl p-8 border border-slate-700 relative overflow-hidden group">
+           <div className="bg-slate-800 rounded-3xl p-8 border border-slate-700 relative overflow-hidden group">
              <div className="absolute top-0 right-0 p-8 opacity-10">
-                <XCircle size={120} />
+               <XCircle size={120} style={{ color: 'rgba(255,99,71,0.2)' }} />
              </div>
             <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
               <span className="bg-red-500/20 text-red-400 p-2 rounded-lg"><XCircle size={24} /></span>
@@ -29,7 +29,7 @@ export const ComparisonSection: React.FC = () => {
                     <span className="text-white font-mono">$70k</span>
                 </div>
                 <div className="w-full bg-slate-700 h-2 rounded-full overflow-hidden">
-                    <div className="bg-red-400 h-full w-[60%]"></div>
+                  <div className="h-full w-[60%]" style={{ backgroundColor: 'var(--ocean-blue)' }}></div>
                 </div>
                 <p className="text-xs text-slate-500 mt-2">Idle 40% of the year</p>
               </div>
@@ -40,7 +40,7 @@ export const ComparisonSection: React.FC = () => {
                     <span className="text-white font-mono">$85k</span>
                 </div>
                 <div className="w-full bg-slate-700 h-2 rounded-full overflow-hidden">
-                    <div className="bg-red-400 h-full w-[30%]"></div>
+                  <div className="h-full w-[30%]" style={{ backgroundColor: 'var(--bright-lavender)' }}></div>
                 </div>
                  <p className="text-xs text-slate-500 mt-2">Idle 70% of the year</p>
               </div>
@@ -51,7 +51,7 @@ export const ComparisonSection: React.FC = () => {
                     <span className="text-white font-mono">$95k</span>
                 </div>
                 <div className="w-full bg-slate-700 h-2 rounded-full overflow-hidden">
-                    <div className="bg-red-400 h-full w-[50%]"></div>
+                  <div className="h-full w-[50%]" style={{ backgroundColor: 'var(--celadon)' }}></div>
                 </div>
                  <p className="text-xs text-slate-500 mt-2">Idle 50% of the year</p>
               </div>
@@ -64,12 +64,12 @@ export const ComparisonSection: React.FC = () => {
           </div>
 
           {/* Purely Flex */}
-          <div className="bg-gradient-to-br from-indigo-900 to-slate-800 rounded-3xl p-8 border border-indigo-500/30 relative overflow-hidden shadow-2xl shadow-indigo-900/50">
+          <div className="rounded-3xl p-8 border relative overflow-hidden shadow-2xl" style={{ background: 'linear-gradient(135deg, rgba(27,138,191,0.95), rgba(17,24,39,0.95))', borderColor: 'rgba(27,138,191,0.15)', boxShadow: '0 20px 60px rgba(27,138,191,0.08)' }}>
             <div className="absolute top-0 right-0 p-8 opacity-10">
                 <CheckCircle size={120} />
              </div>
             <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
-              <span className="bg-indigo-500/20 text-indigo-400 p-2 rounded-lg"><CheckCircle size={24} /></span>
+              <span className="p-2 rounded-lg" style={{ backgroundColor: 'rgba(186,145,242,0.08)', color: 'var(--bright-lavender)' }}><CheckCircle size={24} /></span>
               Purely Flex
             </h3>
 
@@ -78,18 +78,18 @@ export const ComparisonSection: React.FC = () => {
                 Access to specialized teams across all three domains, with bandwidth that flexes to match your actual needs.
                </p>
 
-               <div className="bg-indigo-950/50 p-6 rounded-xl border border-indigo-500/30">
+               <div className="p-6 rounded-xl border" style={{ backgroundColor: 'rgba(17,24,39,0.6)', borderColor: 'rgba(27,138,191,0.12)' }}>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-indigo-300 text-sm uppercase font-bold tracking-wider">Active Capacity</span>
-                    <span className="text-green-400 text-xs font-bold px-2 py-1 bg-green-900/30 rounded-full">100% UTILIZATION</span>
+                    <span className="text-sm uppercase font-bold tracking-wider" style={{ color: 'var(--bright-lavender)' }}>Active Capacity</span>
+                    <span className="text-xs font-bold px-2 py-1 rounded-full" style={{ backgroundColor: 'rgba(119,217,171,0.12)', color: 'var(--celadon)' }}>100% UTILIZATION</span>
                   </div>
                   {/* Visualization of fluid capacity */}
                   <div className="flex h-12 gap-1">
-                      <div className="flex-1 bg-blue-500 rounded-l-md opacity-80 flex items-center justify-center text-xs text-white font-bold">Recruit</div>
-                      <div className="flex-1 bg-purple-500 opacity-80 flex items-center justify-center text-xs text-white font-bold">Proposal</div>
-                      <div className="flex-1 bg-emerald-500 rounded-r-md opacity-80 flex items-center justify-center text-xs text-white font-bold">Dev</div>
+                      <div className="flex-1 rounded-l-md opacity-80 flex items-center justify-center text-xs text-white font-bold" style={{ backgroundColor: 'var(--ocean-blue)' }}>Recruit</div>
+                      <div className="flex-1 opacity-80 flex items-center justify-center text-xs text-white font-bold" style={{ backgroundColor: 'var(--bright-lavender)' }}>Proposal</div>
+                      <div className="flex-1 rounded-r-md opacity-80 flex items-center justify-center text-xs text-white font-bold" style={{ backgroundColor: 'var(--celadon)' }}>Dev</div>
                   </div>
-                  <p className="text-xs text-indigo-300 mt-3 text-center">Scale up instantly. Scale down when demand is lighter.</p>
+                  <p className="text-xs mt-3 text-center" style={{ color: 'var(--bright-lavender)' }}>Scale up instantly. Scale down when demand is lighter.</p>
                </div>
 
                <div className="pt-4 border-t border-slate-700/50">

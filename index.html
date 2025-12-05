@@ -5,16 +5,142 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Purely Flex - Adaptive Team Solutions</title>
+    <script>
+      /* Tailwind config: adds site-wide color tokens so classes like
+         `bg-bright_lavender` or `text-ocean-blue` map to your exact palette. */
+      tailwind = window.tailwind || {};
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              /* provided palette (both underscore and kebab variants) */
+              bright_lavender: {
+                DEFAULT: '#ba91f2',
+                100: '#220845',
+                200: '#43108b',
+                300: '#6518d0',
+                400: '#8e4cea',
+                500: '#ba91f2',
+                600: '#c8a7f5',
+                700: '#d5bdf7',
+                800: '#e3d3fa',
+                900: '#f1e9fc'
+              },
+              'bright-lavender': {
+                DEFAULT: '#ba91f2',
+                100: '#220845',
+                200: '#43108b',
+                300: '#6518d0',
+                400: '#8e4cea',
+                500: '#ba91f2',
+                600: '#c8a7f5',
+                700: '#d5bdf7',
+                800: '#e3d3fa',
+                900: '#f1e9fc'
+              },
+
+              ocean_blue: {
+                DEFAULT: '#1b8abf',
+                100: '#051c26',
+                200: '#0b384d',
+                300: '#105473',
+                400: '#16709a',
+                500: '#1b8abf',
+                600: '#34abe2',
+                700: '#66c0e9',
+                800: '#99d5f0',
+                900: '#cceaf8'
+              },
+              'ocean-blue': {
+                DEFAULT: '#1b8abf',
+                100: '#051c26',
+                200: '#0b384d',
+                300: '#105473',
+                400: '#16709a',
+                500: '#1b8abf',
+                600: '#34abe2',
+                700: '#66c0e9',
+                800: '#99d5f0',
+                900: '#cceaf8'
+              },
+
+              celadon: {
+                DEFAULT: '#77d9ab',
+                100: '#0f3523',
+                200: '#1e6946',
+                300: '#2c9e69',
+                400: '#43ca8b',
+                500: '#77d9ab',
+                600: '#93e0bc',
+                700: '#aee8cd',
+                800: '#c9f0de',
+                900: '#e4f7ee'
+              },
+              'sunlit-clay': {
+                DEFAULT: '#f2bc79',
+                100: '#422707',
+                200: '#844e0d',
+                300: '#c67614',
+                400: '#eb9a37',
+                500: '#f2bc79',
+                600: '#f4c993',
+                700: '#f7d6ae',
+                800: '#fae4c9',
+                900: '#fcf1e4'
+              },
+              salmon: {
+                DEFAULT: '#f2856d',
+                100: '#411006',
+                200: '#81210b',
+                300: '#c23111',
+                400: '#ed502d',
+                500: '#f2856d',
+                600: '#f59e8b',
+                700: '#f7b6a8',
+                800: '#facfc5',
+                900: '#fce7e2'
+              }
+            }
+          }
+        }
+      };
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
     <style>
       :root {
-        /* Fresh CSS Variables for Scrollbar */
-        /* Gradient: #5399f5 (Blue), #bd75f7 (Purple), #54b684 (Green) */
-        --custom-scroll-thumb: linear-gradient(to bottom, #5399f5, #bd75f7, #54b684);
+        /* Brand color variables (exact hexes requested) */
+        --bright-lavender: #ba91f2ff;
+        --ocean-blue: #1b8abfff;
+        --celadon: #77d9abff;
+        --sunlit-clay: #f2bc79ff;
+        --salmon: #f2856dff;
+
+        /* Lighter/tint variants (useful for backgrounds, badges, subtle fills) */
+        --bright-lavender-100: rgba(186,145,242,0.08);
+        --bright-lavender-200: rgba(186,145,242,0.16);
+        --bright-lavender-300: rgba(186,145,242,0.24);
+
+        --ocean-blue-100: rgba(27,138,191,0.08);
+        --ocean-blue-200: rgba(27,138,191,0.16);
+        --ocean-blue-300: rgba(27,138,191,0.24);
+
+        --celadon-100: rgba(119,217,171,0.08);
+        --celadon-200: rgba(119,217,171,0.16);
+        --celadon-300: rgba(119,217,171,0.24);
+
+        --sunlit-clay-100: rgba(242,188,121,0.08);
+        --sunlit-clay-200: rgba(242,188,121,0.16);
+        --sunlit-clay-300: rgba(242,188,121,0.24);
+
+        --salmon-100: rgba(242,133,109,0.08);
+        --salmon-200: rgba(242,133,109,0.16);
+        --salmon-300: rgba(242,133,109,0.24);
+        /* Scrollbar gradient using brand colors */
+        --custom-scroll-thumb: linear-gradient(to bottom, var(--ocean-blue), var(--bright-lavender), var(--celadon));
         --custom-scroll-track: #f8fafc;
-        --custom-scroll-ff-thumb: #5399f5; /* Fallback solid color for Firefox */
+        --custom-scroll-ff-thumb: var(--ocean-blue); /* Fallback solid color for Firefox */
       }
 
       body {

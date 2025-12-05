@@ -40,23 +40,23 @@ export const Navigation: React.FC<NavigationProps> = ({ currentPage, onNavigate 
     if (page === 'HOME' || page === 'FLEX') {
       return {
         textStyle: {
-          backgroundImage: 'linear-gradient(to right, #5399f5, #bd75f7, #54b684)',
+          backgroundImage: 'linear-gradient(to right, var(--ocean-blue), var(--bright-lavender), var(--celadon))',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
           backgroundClip: 'text',
           color: 'transparent',
         },
         bgStyle: {
-          backgroundImage: 'linear-gradient(to right, #5399f5, #bd75f7, #54b684)',
+          backgroundImage: 'linear-gradient(to right, var(--ocean-blue), var(--bright-lavender), var(--celadon))',
         },
-        solidColor: '#9d5aee'
+        solidColor: 'var(--bright-lavender)'
       };
     }
 
-    let color = '#9d5aee';
-    if (page === 'DEV') color = '#54b684';
-    if (page === 'RECRUITING') color = '#5399f5';
-    if (page === 'PROPOSALS') color = '#bd75f7';
+    let color = 'var(--bright-lavender)';
+    if (page === 'DEV') color = 'var(--celadon)';
+    if (page === 'RECRUITING') color = 'var(--ocean-blue)';
+    if (page === 'PROPOSALS') color = 'var(--bright-lavender)';
 
     return {
       textStyle: { color },
@@ -68,19 +68,13 @@ export const Navigation: React.FC<NavigationProps> = ({ currentPage, onNavigate 
   const theme = getPageTheme(currentPage);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-3' : 'bg-white/50 backdrop-blur-sm py-5'}`}>
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white backdrop-blur-md shadow-sm py-3 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
         
-        {/* Logo */}
-        <button onClick={() => handleNav('HOME')} className="flex items-center gap-3 group">
+        {/* Logo (image only) */}
+        <button onClick={() => handleNav('HOME')} aria-label="Go to homepage" className="group">
           <div className="group-hover:opacity-80 transition-opacity">
-            {/* Increased height and set width to auto for PNG logo */}
             <Logo className="h-12 w-auto" />
-          </div>
-          <div className="flex flex-col items-start">
-            <span className="text-2xl font-bold tracking-tight text-slate-900 leading-none">
-              Purely<span style={theme.textStyle}>Works</span>
-            </span>
           </div>
         </button>
 

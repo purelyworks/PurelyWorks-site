@@ -36,26 +36,26 @@ const App: React.FC = () => {
 
     switch (currentPage) {
       case 'PROPOSALS':
-        // #bd75f7 - Proposals
-        thumbStyle = '#bd75f7';
-        ffThumbColor = '#bd75f7';
+        // Proposals -> bright lavender
+        thumbStyle = 'var(--bright-lavender)';
+        ffThumbColor = 'var(--bright-lavender)';
         break;
       case 'DEV':
-        // #54b684 - Development
-        thumbStyle = '#54b684';
-        ffThumbColor = '#54b684';
+        // Development -> celadon
+        thumbStyle = 'var(--celadon)';
+        ffThumbColor = 'var(--celadon)';
         break;
       case 'RECRUITING':
-        // #5399f5 - Recruiting
-        thumbStyle = '#5399f5';
-        ffThumbColor = '#5399f5';
+        // Recruiting -> ocean blue
+        thumbStyle = 'var(--ocean-blue)';
+        ffThumbColor = 'var(--ocean-blue)';
         break;
       case 'HOME':
       case 'FLEX':
       default:
-        // Gradient: #5399f5 (Recruiting Blue) -> #bd75f7 (Proposals Purple) -> #54b684 (Dev Green)
-        thumbStyle = 'linear-gradient(to bottom, #5399f5, #bd75f7, #54b684)';
-        ffThumbColor = '#5399f5'; // Firefox fallback (first color)
+        // Home gradient -> ocean blue -> bright lavender -> celadon
+        thumbStyle = 'linear-gradient(to bottom, var(--ocean-blue), var(--bright-lavender), var(--celadon))';
+        ffThumbColor = 'var(--ocean-blue)'; // Firefox fallback (first color)
         break;
     }
 

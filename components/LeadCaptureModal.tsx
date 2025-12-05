@@ -125,7 +125,7 @@ export const LeadCaptureModal: React.FC = () => {
       <div className={`bg-white w-full rounded-2xl shadow-2xl overflow-hidden flex flex-col transition-all duration-500 ${step === 'BOOKING' ? 'max-w-5xl h-[85vh]' : 'max-w-lg'}`}>
         
         {/* Header */}
-        <div className="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50">
+          <div className="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50">
           <div className="flex items-center gap-2">
             {step === 'BOOKING' ? (
                <div className="flex items-center gap-2">
@@ -165,11 +165,12 @@ export const LeadCaptureModal: React.FC = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="name@company.com"
-                    className="w-full bg-slate-50 border border-slate-200 rounded-xl py-4 pl-12 pr-4 text-slate-900 focus:ring-2 focus:ring-indigo-500 outline-none"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-xl py-4 pl-12 pr-4 text-slate-900 focus:ring-2 outline-none"
+                    style={{ boxShadow: '0 0 0 3px rgba(27,138,191,0.06)', outline: 'none' }}
                     autoFocus
                   />
                 </div>
-                <button type="submit" disabled={isLoading} className="w-full bg-slate-900 text-white font-bold py-4 rounded-xl hover:bg-slate-800 transition-colors flex items-center justify-center gap-2">
+                <button type="submit" disabled={isLoading} className="w-full text-white font-bold py-4 rounded-xl transition-colors flex items-center justify-center gap-2" style={{ backgroundColor: 'var(--ocean-blue)' }}>
                   {isLoading ? <Loader2 className="animate-spin" /> : <>Continue <ArrowRight size={18} /></>}
                 </button>
               </form>
@@ -188,10 +189,11 @@ export const LeadCaptureModal: React.FC = () => {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Full Name"
-                  className="w-full bg-slate-50 border border-slate-200 rounded-xl py-4 px-6 text-slate-900 focus:ring-2 focus:ring-indigo-500 outline-none"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-xl py-4 px-6 text-slate-900 outline-none"
+                  style={{ boxShadow: '0 0 0 3px rgba(27,138,191,0.06)' }}
                   autoFocus
                 />
-                <button type="submit" disabled={isLoading} className="w-full bg-indigo-600 text-white font-bold py-4 rounded-xl hover:bg-indigo-700 transition-colors flex items-center justify-center gap-2">
+                <button type="submit" disabled={isLoading} className="w-full text-white font-bold py-4 rounded-xl transition-colors flex items-center justify-center gap-2" style={{ backgroundColor: 'var(--ocean-blue)' }}>
                   {isLoading ? <Loader2 className="animate-spin" /> : <>Complete <CheckCircle2 size={18} /></>}
                 </button>
               </form>
@@ -201,12 +203,12 @@ export const LeadCaptureModal: React.FC = () => {
           {/* STEP 3: OPTIONS */}
           {step === 'OPTIONS' && (
             <div className="p-8 text-center animate-fade-in">
-              <div className="w-16 h-16 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl">👋</div>
+              <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-2xl" style={{ backgroundColor: 'rgba(27,138,191,0.08)', color: 'var(--ocean-blue)' }}>👋</div>
               <h3 className="text-2xl font-bold mb-2 text-slate-900">Hi {name.split(' ')[0]},</h3>
               <p className="text-slate-500 mb-8">How can we help you today?</p>
               
               <div className="space-y-3">
-                <button onClick={() => setStep('BOOKING')} className="w-full bg-slate-900 text-white font-bold py-4 rounded-xl hover:bg-slate-800 transition-colors flex items-center justify-center gap-2 shadow-lg">
+                <button onClick={() => setStep('BOOKING')} className="w-full text-white font-bold py-4 rounded-xl transition-colors flex items-center justify-center gap-2 shadow-lg" style={{ backgroundColor: 'var(--ocean-blue)' }}>
                   <Calendar size={18} /> Book a Discovery Call
                 </button>
                 <button onClick={() => { setStep('MESSAGE'); setMessageSubject(`Inquiry from ${name}`); }} className="w-full bg-white text-slate-700 border border-slate-200 font-medium py-4 rounded-xl hover:bg-slate-50 transition-colors flex items-center justify-center gap-2">
@@ -237,13 +239,13 @@ export const LeadCaptureModal: React.FC = () => {
                 <form onSubmit={handleSendMessage} className="space-y-4">
                    <div>
                       <label className="block text-sm font-bold text-slate-700 mb-1">Subject</label>
-                      <input type="text" required value={messageSubject} onChange={(e) => setMessageSubject(e.target.value)} className="w-full bg-white border border-slate-300 rounded-lg px-4 py-3 text-slate-900 focus:ring-2 focus:ring-indigo-500 outline-none" />
+                      <input type="text" required value={messageSubject} onChange={(e) => setMessageSubject(e.target.value)} className="w-full bg-white border border-slate-300 rounded-lg px-4 py-3 text-slate-900 outline-none" style={{ boxShadow: '0 0 0 3px rgba(27,138,191,0.04)' }} />
                    </div>
                    <div>
                       <label className="block text-sm font-bold text-slate-700 mb-1">Message</label>
-                      <textarea required value={messageBody} onChange={(e) => setMessageBody(e.target.value)} rows={5} className="w-full bg-white border border-slate-300 rounded-lg px-4 py-3 text-slate-900 focus:ring-2 focus:ring-indigo-500 outline-none resize-none" placeholder="How can we help..."></textarea>
-                   </div>
-                   <button type="submit" disabled={isSendingMessage} className="w-full bg-indigo-600 text-white font-bold py-4 rounded-xl hover:bg-indigo-700 transition-colors flex items-center justify-center gap-2">
+                       <textarea required value={messageBody} onChange={(e) => setMessageBody(e.target.value)} rows={5} className="w-full bg-white border border-slate-300 rounded-lg px-4 py-3 text-slate-900 outline-none resize-none" placeholder="How can we help..." style={{ boxShadow: '0 0 0 3px rgba(27,138,191,0.04)' }}></textarea>
+                     </div>
+                     <button type="submit" disabled={isSendingMessage} className="w-full text-white font-bold py-4 rounded-xl transition-colors flex items-center justify-center gap-2" style={{ backgroundColor: 'var(--ocean-blue)' }}>
                      {isSendingMessage ? <Loader2 className="animate-spin" /> : <>Send Message <Send size={18} /></>}
                    </button>
                 </form>

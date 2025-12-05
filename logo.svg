@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Replaced logo: provided by user attachment (1.svg) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" fill="none">
+  <rect width="120" height="40" rx="8" fill="#0f172a" />
+  <g transform="translate(12,8)" fill="none" stroke="none">
+    <circle cx="8" cy="12" r="8" fill="#06b6d4" />
+    <path d="M28 4 L36 20 L20 20 Z" fill="#7c3aed" />
+    <text x="48" y="18" fill="#ffffff" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="600">Purely Works</text>
+  </g>
+</svg>
