@@ -1,5 +1,5 @@
-
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { Navigation } from './components/Navigation';
 import { ContactFooter } from './components/ContactFooter';
 import { Home } from './pages/Home';
@@ -7,28 +7,31 @@ import { PurelyFlex } from './pages/PurelyFlex';
 import { FocusedDevelopment } from './pages/FocusedDevelopment';
 import { FocusedRecruiting } from './pages/FocusedRecruiting';
 import { FocusedProposals } from './pages/FocusedProposals';
+import { Blog } from './pages/Blog';
+import { AdminLogin } from './pages/AdminLogin';
 import { MoleEasterEgg } from './components/MoleEasterEgg';
 import { LeadCaptureModal } from './components/LeadCaptureModal';
 import { LeadCaptureProvider } from './context/LeadCaptureContext';
 import { Page } from './types';
 import { trackHubSpotPageView } from './services/hubspotService';
 
-const App: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState<Page>('HOME');
+const themeFromPath = (pathname: string): Page => {
+  if (pathname.startsWith('/purely-flex')) return 'FLEX';
+  if (pathname.startsWith('/focused-development')) return 'DEV';
+  if (pathname.startsWith('/focused-recruiting')) return 'RECRUITING';
+  if (pathname.startsWith('/focused-proposals')) return 'PROPOSALS';
+  return 'HOME';
+};
 
-  // Track page views on navigation
+const AppContent: React.FC = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const currentPage = themeFromPath(location.pathname);
+
   useEffect(() => {
-    const pathMap: Record<Page, string> = {
-        'HOME': '/',
-        'FLEX': '/purely-flex',
-        'DEV': '/focused-development',
-        'RECRUITING': '/focused-recruiting',
-        'PROPOSALS': '/focused-proposals'
-    };
-    trackHubSpotPageView(pathMap[currentPage]);
-  }, [currentPage]);
+    trackHubSpotPageView(location.pathname);
+  }, [location.pathname]);
 
-  // Custom Scrollbar Logic
   useEffect(() => {
     const root = document.documentElement;
     let thumbStyle = '';
@@ -36,63 +39,74 @@ const App: React.FC = () => {
 
     switch (currentPage) {
       case 'PROPOSALS':
-        // Proposals -> bright lavender
         thumbStyle = 'var(--bright-lavender)';
         ffThumbColor = 'var(--bright-lavender)';
         break;
       case 'DEV':
-        // Development -> celadon
         thumbStyle = 'var(--celadon)';
         ffThumbColor = 'var(--celadon)';
         break;
       case 'RECRUITING':
-        // Recruiting -> ocean blue
         thumbStyle = 'var(--ocean-blue)';
         ffThumbColor = 'var(--ocean-blue)';
         break;
       case 'HOME':
       case 'FLEX':
       default:
-        // Home gradient -> ocean blue -> bright lavender -> celadon
         thumbStyle = 'linear-gradient(to bottom, var(--ocean-blue), var(--bright-lavender), var(--celadon))';
-        ffThumbColor = 'var(--ocean-blue)'; // Firefox fallback (first color)
+        ffThumbColor = 'var(--ocean-blue)';
         break;
     }
 
-    // Update the new custom variables
     root.style.setProperty('--custom-scroll-thumb', thumbStyle);
     root.style.setProperty('--custom-scroll-ff-thumb', ffThumbColor);
   }, [currentPage]);
 
-  const renderPage = () => {
-    switch (currentPage) {
-      case 'HOME': return <Home onNavigate={setCurrentPage} />;
-      case 'FLEX': return <PurelyFlex />;
-      case 'DEV': return <FocusedDevelopment />;
-      case 'RECRUITING': return <FocusedRecruiting />;
-      case 'PROPOSALS': return <FocusedProposals />;
-      default: return <Home onNavigate={setCurrentPage} />;
-    }
+  const handleNavigate = (page: Page) => {
+    const routeMap: Record<Page, string> = {
+      HOME: '/',
+      FLEX: '/purely-flex',
+      DEV: '/focused-development',
+      RECRUITING: '/focused-recruiting',
+      PROPOSALS: '/focused-proposals',
+    };
+
+    navigate(routeMap[page]);
+    window.scrollTo(0, 0);
   };
 
   return (
-    <LeadCaptureProvider>
-      <div className="min-h-screen w-full overflow-x-hidden bg-slate-50 font-sans text-slate-900 selection:bg-indigo-100 selection:text-indigo-900">
-        <Navigation currentPage={currentPage} onNavigate={setCurrentPage} />
-        
-        <main>
-          {renderPage()}
-        </main>
+    <div className="min-h-screen w-full overflow-x-hidden bg-slate-50 font-sans text-slate-900 selection:bg-indigo-100 selection:text-indigo-900">
+      <Navigation currentPage={currentPage} onNavigate={handleNavigate} />
 
-        <div id="contact">
-          <ContactFooter />
-        </div>
+      <main>
+        <Routes>
+          <Route path="/" element={<Home onNavigate={handleNavigate} />} />
+          <Route path="/purely-flex" element={<PurelyFlex />} />
+          <Route path="/focused-development" element={<FocusedDevelopment />} />
+          <Route path="/focused-recruiting" element={<FocusedRecruiting />} />
+          <Route path="/focused-proposals" element={<FocusedProposals />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/admin" element={<AdminLogin />} />
+        </Routes>
+      </main>
 
-        <LeadCaptureModal />
-        <MoleEasterEgg />
+      <div id="contact">
+        <ContactFooter />
       </div>
-    </LeadCaptureProvider>
+
+      <LeadCaptureModal />
+      <MoleEasterEgg />
+    </div>
   );
 };
+
+const App: React.FC = () => (
+  <BrowserRouter>
+    <LeadCaptureProvider>
+      <AppContent />
+    </LeadCaptureProvider>
+  </BrowserRouter>
+);
 
 export default App;

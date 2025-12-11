@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X, ChevronRight } from 'lucide-react';
 import { Logo } from './Logo';
 import { Page } from '../types';
@@ -97,9 +98,16 @@ export const Navigation: React.FC<NavigationProps> = ({ currentPage, onNavigate 
               </button>
             );
           })}
-          
+
+          <Link
+            to="/blog"
+            className="text-sm font-medium text-slate-600 hover:text-indigo-600 transition-all"
+          >
+            Blog
+          </Link>
+
           <div className="pl-4 border-l border-slate-200">
-            <button 
+            <button
               onClick={openLeadCapture}
               className="text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-slate-800 transition-all shadow-lg hover:shadow-xl flex items-center gap-2 group"
               style={{ backgroundColor: '#0f172a' }} // Slate 900
@@ -142,8 +150,15 @@ export const Navigation: React.FC<NavigationProps> = ({ currentPage, onNavigate 
               </button>
             );
           })}
+          <Link
+            to="/blog"
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="text-left px-4 py-3 rounded-lg font-medium text-slate-600 hover:bg-slate-50"
+          >
+            Blog
+          </Link>
           <div className="pt-8 px-4">
-            <button 
+            <button
               onClick={() => {
                 openLeadCapture();
                 setIsMobileMenuOpen(false);
