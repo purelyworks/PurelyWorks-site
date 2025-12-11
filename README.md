@@ -33,3 +33,11 @@ Password: purely!123
 ```
 
 Replace these with environment-specific secrets when connecting to a live Payload backend.
+
+## How to log in to the admin handoff
+
+1. Start the site locally with `npm run dev` (or deploy it and visit the hosted URL).
+2. Open `/admin` in your browser (e.g., `http://localhost:5173/admin` when running locally).
+3. Use the default credentials above to sign in and manage pages or blog posts via your Payload instance.
+
+Once your Payload backend is wired up, swap in your real admin email/password (or SSO) so the handoff screen reflects the production credentials.
