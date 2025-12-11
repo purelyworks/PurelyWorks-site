@@ -19,6 +19,16 @@ const PRIVATE_APP_TOKEN =
   import.meta.env.VITE_HUBSPOT_PRIVATE_APP_TOKEN ||
   import.meta.env.HS_PRIVATE_APP_TOKEN;
 
+if (import.meta.env.DEV) {
+  const hasPortal = Boolean(PORTAL_ID && PORTAL_ID !== 'YOUR_PORTAL_ID');
+  const hasForm = Boolean(FORM_ID && FORM_ID !== 'YOUR_FORM_GUID');
+  console.info('[HubSpot] config check', {
+    portalConfigured: hasPortal,
+    formConfigured: hasForm,
+    privateTokenProvided: Boolean(PRIVATE_APP_TOKEN),
+  });
+}
+
 interface HubSpotFormData {
   email: string;
   firstname?: string;
@@ -88,9 +98,14 @@ export const submitToHubSpot = async (data: HubSpotFormData) => {
 
     const result = await response.json();
     if (!response.ok) {
-      console.error('HubSpot Submission Error:', result);
+      console.error('HubSpot Submission Error:', {
+        status: response.status,
+        statusText: response.statusText,
+        result,
+      });
       throw new Error(result.errors?.[0]?.message || 'Failed to submit to HubSpot');
     }
+    console.info('HubSpot submission success', result?.inlineMessage || result?.status || 'ok');
     return result;
   } catch (error) {
     console.error('HubSpot API Error:', error);
@@ -131,11 +146,16 @@ export const findContactByEmail = async (email: string): Promise<HubSpotContact 
     });
 
     if (!response.ok) {
-      console.error('HubSpot contact lookup failed', await response.text());
+      console.error('HubSpot contact lookup failed', {
+        status: response.status,
+        statusText: response.statusText,
+        body: await response.text(),
+      });
       return null;
     }
 
     const result = await response.json();
+    console.info('HubSpot contact lookup result', result?.results?.length ? 'match found' : 'no match');
     const contact = result?.results?.[0];
     if (!contact) return null;
 
@@ -183,7 +203,13 @@ export const upsertContact = async (data: HubSpotFormData, existingContact?: Hub
       });
 
       if (!updateResponse.ok) {
-        console.error('HubSpot contact update failed', await updateResponse.text());
+        console.error('HubSpot contact update failed', {
+          status: updateResponse.status,
+          statusText: updateResponse.statusText,
+          body: await updateResponse.text(),
+        });
+      } else {
+        console.info('HubSpot contact updated');
       }
     } else {
       const createResponse = await fetch('https://api.hubapi.com/crm/v3/objects/contacts', {
@@ -198,7 +224,13 @@ export const upsertContact = async (data: HubSpotFormData, existingContact?: Hub
       });
 
       if (!createResponse.ok) {
-        console.error('HubSpot contact creation failed', await createResponse.text());
+        console.error('HubSpot contact creation failed', {
+          status: createResponse.status,
+          statusText: createResponse.statusText,
+          body: await createResponse.text(),
+        });
+      } else {
+        console.info('HubSpot contact created');
       }
     }
   } catch (error) {

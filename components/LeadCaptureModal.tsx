@@ -56,6 +56,7 @@ export const LeadCaptureModal: React.FC = () => {
     e.preventDefault();
     const normalizedEmail = email.trim().toLowerCase();
     if (!normalizedEmail) return;
+    setEmail(normalizedEmail);
     setIsLoading(true);
 
     // 1. Check HubSpot for an existing contact
