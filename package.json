@@ -6,15 +6,25 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "cms:dev": "cross-env PAYLOAD_CONFIG_PATH=./cms/payload.config.ts payload dev",
+    "cms:build": "cross-env PAYLOAD_CONFIG_PATH=./cms/payload.config.ts payload build",
+    "cms:seed": "cross-env PAYLOAD_CONFIG_PATH=./cms/payload.config.ts node cms/seed.js"
   },
   "dependencies": {
     "@google/genai": "^1.30.0",
+    "@payloadcms/db-sqlite": "^3.68.3",
+    "@payloadcms/richtext-slate": "^3.68.3",
+    "cross-env": "^10.1.0",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
     "lucide-react": "^0.554.0",
+    "payload": "^3.68.3",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-router-dom": "^7.10.1",
-    "recharts": "^3.4.1"
+    "recharts": "^3.4.1",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",

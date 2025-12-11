@@ -21,7 +21,7 @@ View your app in AI Studio: https://ai.studio/apps/drive/1h-FHIUVPdqF8Y0aBHTRuI_
 
 If you're deploying on Vercel, include the provided `vercel.json` so routes like `/admin` and `/blog` resolve to the SPA entrypoint instead of returning a 404.
 
-Set `VITE_PAYLOAD_ADMIN_URL` to the URL of your Payload admin dashboard (for example, `https://cms.purelyworks.com/admin`) so the `/admin` handoff redirects to the live CMS instead of stopping at the local success message.
+Set `VITE_PAYLOAD_ADMIN_URL` to the URL of your Payload admin dashboard (for example, `https://www.purelyworks.com/admin`) so the `/admin` handoff redirects to the live CMS instead of stopping at the local success message. When running the built-in Payload backend locally, the admin lives at `/admin` on the same origin as the marketing site.
 
 ## Payload-ready theme and routes
 
@@ -37,6 +37,32 @@ Password: purely!123
 ```
 
 Replace these with environment-specific secrets when connecting to a live Payload backend.
+
+## Run the Payload backend on the root domain
+
+The repo now ships with a Payload CMS instance that lives alongside the marketing site so `/admin`, `/api`, and the marketing pages all share the same origin.
+
+### Configure
+
+- Copy `.env.example` to `.env` and set values for `PAYLOAD_SECRET`, `DATABASE_URL` (defaults to SQLite at `file:./cms/payload.db`), and `PURELY_ADMIN_PASSWORD` if you want a custom password for `farid@purelyworks.com`.
+- Set `VITE_PAYLOAD_PUBLIC_URL` to your public origin (e.g., `https://www.purelyworks.com`) so the SPA fetches blog posts from `/api`.
+
+### Develop locally
+
+1. Build the frontend assets so the CMS server can serve them from `/`:
+   ```
+   npm run build
+   ```
+2. Start Payload and the unified server at `http://localhost:4000`:
+   ```
+   npm run cms:dev
+   ```
+3. Seed the admin user if this is the first run:
+   ```
+   npm run cms:seed
+   ```
+
+You can now log in at `http://localhost:4000/admin` with `farid@purelyworks.com` and the password you set via `PURELY_ADMIN_PASSWORD` (or the default `PurelySecure!123`). Blog posts created in Payload appear on `/blog` and individual posts render at `/blog/:slug`.
 
 ## How to log in to the admin handoff
 

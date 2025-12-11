@@ -8,6 +8,7 @@ import { FocusedDevelopment } from './pages/FocusedDevelopment';
 import { FocusedRecruiting } from './pages/FocusedRecruiting';
 import { FocusedProposals } from './pages/FocusedProposals';
 import { Blog } from './pages/Blog';
+import { BlogPost } from './pages/BlogPost';
 import { AdminLogin } from './pages/AdminLogin';
 import { MoleEasterEgg } from './components/MoleEasterEgg';
 import { LeadCaptureModal } from './components/LeadCaptureModal';
@@ -87,6 +88,7 @@ const AppContent: React.FC = () => {
           <Route path="/focused-recruiting" element={<FocusedRecruiting />} />
           <Route path="/focused-proposals" element={<FocusedProposals />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/admin" element={<AdminLogin />} />
         </Routes>
       </main>
