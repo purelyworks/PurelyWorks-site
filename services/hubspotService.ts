@@ -13,6 +13,18 @@ interface HubSpotFormData {
   subject?: string;
 }
 
+interface HubSpotContact {
+  id?: string;
+  email: string;
+  firstname?: string;
+  lastname?: string;
+}
+
+interface HubSpotLookupResponse {
+  found: boolean;
+  contact?: HubSpotContact;
+}
+
 // Helper to get the HubSpot Tracking Cookie (hubspotutk)
 const getHubSpotCookie = (): string | undefined => {
   const matches = document.cookie.match(/hubspotutk=([^;]*)/);
@@ -24,7 +36,7 @@ const getHubSpotCookie = (): string | undefined => {
  * This links the browser's tracking cookie to the contact record.
  */
 export const submitToHubSpot = async (data: HubSpotFormData) => {
-  if (!PORTAL_ID || !FORM_ID || PORTAL_ID === 'YOUR_PORTAL_ID') {
+  if (!PORTAL_ID || !FORM_ID || PORTAL_ID === 'YOUR_PORTAL_ID' || FORM_ID === 'YOUR_FORM_GUID') {
     console.warn("HubSpot Portal ID or Form ID not configured.");
     return;
   }
@@ -73,6 +85,40 @@ export const submitToHubSpot = async (data: HubSpotFormData) => {
   } catch (error) {
     console.error('HubSpot API Error:', error);
     // We don't throw here to prevent blocking the UI flow if the API fails (e.g. AdBlocker)
+  }
+};
+
+export const lookupHubSpotContact = async (email: string): Promise<HubSpotLookupResponse | undefined> => {
+  try {
+    const response = await fetch(`/api/hubspot/lookup?email=${encodeURIComponent(email)}`);
+    if (!response.ok) {
+      console.error('HubSpot lookup request failed:', response.status);
+      return;
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('HubSpot lookup error:', error);
+  }
+};
+
+export const upsertHubSpotContact = async (data: {
+  email: string;
+  firstname?: string;
+  lastname?: string;
+}) => {
+  try {
+    const response = await fetch('/api/hubspot/upsert', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    if (!response.ok) {
+      console.error('HubSpot upsert request failed:', response.status);
+      return;
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('HubSpot upsert error:', error);
   }
 };
 

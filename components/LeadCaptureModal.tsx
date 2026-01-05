@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, Mail, ArrowRight, CheckCircle2, Loader2, Calendar, MessageSquare, Send } from 'lucide-react';
 import { useLeadCapture } from '../context/LeadCaptureContext';
-import { submitToHubSpot } from '../services/hubspotService';
+import { submitToHubSpot, lookupHubSpotContact, upsertHubSpotContact } from '../services/hubspotService';
 
 type Step = 'EMAIL' | 'NAME' | 'OPTIONS' | 'BOOKING' | 'MESSAGE';
 
@@ -59,13 +59,21 @@ export const LeadCaptureModal: React.FC = () => {
     // 1. Submit to HubSpot to create contact and associate tracking cookie
     await submitToHubSpot({ email });
     
+    const lookupResult = await lookupHubSpotContact(email);
+    const lookupFirst = lookupResult?.contact?.firstname?.trim();
+    const lookupLast = lookupResult?.contact?.lastname?.trim();
+    const lookupName = [lookupFirst, lookupLast].filter(Boolean).join(' ').trim();
+
     // Check local storage match
     const storedName = localStorage.getItem('pw_lead_name');
     const storedEmail = localStorage.getItem('pw_lead_email');
     
     setIsLoading(false);
-    if (storedName && storedEmail === email) {
-      setName(storedName);
+    const resolvedName = lookupName || (storedName && storedEmail === email ? storedName : '');
+    setName(resolvedName);
+    if (resolvedName) {
+      localStorage.setItem('pw_lead_email', email);
+      localStorage.setItem('pw_lead_name', resolvedName);
       setStep('OPTIONS');
     } else {
       setStep('NAME');
@@ -82,8 +90,11 @@ export const LeadCaptureModal: React.FC = () => {
     const firstname = nameParts[0];
     const lastname = nameParts.length > 1 ? nameParts.slice(1).join(' ') : undefined;
 
-    // 2. Submit to HubSpot to update contact name
-    await submitToHubSpot({ email, firstname, lastname });
+    // 2. Update contact name in HubSpot CRM (fallback to form submit if needed)
+    const upsertResult = await upsertHubSpotContact({ email, firstname, lastname });
+    if (!upsertResult) {
+      await submitToHubSpot({ email, firstname, lastname });
+    }
     
     localStorage.setItem('pw_lead_email', email);
     localStorage.setItem('pw_lead_name', name);
