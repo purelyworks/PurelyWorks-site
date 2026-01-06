@@ -1,7 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { useLeadCapture } from '../context/LeadCaptureContext';
-import { PacmanFooterGame } from './PacmanFooterGame';
 
 export const ContactFooter: React.FC = () => {
   const { openLeadCapture } = useLeadCapture();
@@ -59,13 +58,6 @@ export const ContactFooter: React.FC = () => {
         </div>
         
         <div className="mt-20 pt-8 border-t border-slate-800 text-center text-slate-600 text-sm">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-6">
-            <PacmanFooterGame />
-            <div className="text-left text-slate-400">
-              <p className="font-semibold text-white">Full Payload stack ready</p>
-              <p>Use the admin credentials to create pages and blog posts while keeping the theme consistent.</p>
-            </div>
-          </div>
           © {new Date().getFullYear()} Purely Works. All rights reserved.
         </div>
       </div>
