@@ -18,6 +18,11 @@ const patrickHand = Patrick_Hand({
 export const metadata = {
   title: 'Purely Flex - Adaptive Team Solutions',
   description: 'Purely Works Website',
+  icons: {
+    icon: '/assets/Circle.png',
+    apple: '/assets/Circle.png',
+    shortcut: '/assets/Circle.png',
+  },
 };
 
 export const viewport = {
