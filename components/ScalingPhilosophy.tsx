@@ -64,17 +64,17 @@ export const ScalingPhilosophy: React.FC = () => {
                          <div className="absolute top-0 left-0 h-full bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-500 opacity-20"></div>
                     </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-stretch">
                         {stages.map((stage, idx) => (
-                            <ScrollReveal key={stage.id} delay={idx * 200}>
-                                <div className="relative group">
+                            <ScrollReveal key={stage.id} delay={idx * 200} className="h-full">
+                                <div className="relative group h-full flex flex-col">
                                     {/* Timeline Dot */}
                                     <div className={`hidden lg:flex w-12 h-12 mx-auto mb-8 rounded-full ${stage.color} text-white items-center justify-center shadow-lg z-10 relative group-hover:scale-110 transition-transform duration-300`}>
                                         <span className="font-bold">{stage.id}</span>
                                     </div>
 
                                     {/* Card */}
-                                    <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 h-full">
+                                    <div className="bg-white border border-slate-200 rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 h-full flex flex-col">
                                         <div className="lg:hidden mb-6 inline-flex items-center justify-center w-10 h-10 rounded-full bg-slate-900 text-white font-bold">
                                             {stage.id}
                                         </div>
@@ -86,10 +86,10 @@ export const ScalingPhilosophy: React.FC = () => {
                                             <span className="text-xs font-bold uppercase tracking-widest text-slate-400">{stage.period}</span>
                                         </div>
 
-                                        <h3 className="text-2xl font-bold text-slate-900 mb-2">{stage.title}</h3>
-                                        <div className="text-sm font-medium text-slate-500 mb-6">Recommended: <span className="text-slate-900">{stage.recommendation}</span></div>
+                                        <h3 className="text-2xl font-bold text-slate-900 mb-2 lg:min-h-[4rem]">{stage.title}</h3>
+                                        <div className="text-sm font-medium text-slate-500 mb-6 lg:min-h-[1.5rem]">Recommended: <span className="text-slate-900">{stage.recommendation}</span></div>
 
-                                        <ul className="space-y-3">
+                                        <ul className="space-y-3 flex-1">
                                             {stage.points.map((p, i) => (
                                                 <li key={i} className="flex items-start gap-3 text-slate-600 text-sm leading-relaxed">
                                                     <span className={`mt-1.5 w-1.5 h-1.5 rounded-full ${stage.color}`}></span>
