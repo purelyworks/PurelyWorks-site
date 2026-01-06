@@ -75,7 +75,7 @@ export const Navigation: React.FC<NavigationProps> = ({ currentPage, onNavigate 
         {/* Logo (image only) */}
         <button onClick={() => handleNav('HOME')} aria-label="Go to homepage" className="group">
           <div className="group-hover:opacity-80 transition-opacity">
-            <Logo className="h-12 w-auto" />
+            <Logo className="h-10 w-auto" />
           </div>
         </button>
 
