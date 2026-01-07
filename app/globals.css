@@ -3,31 +3,70 @@
 @tailwind utilities;
 
 :root {
-  --bright-lavender: #ba91f2ff;
-  --ocean-blue: #1b8abfff;
-  --celadon: #77d9abff;
-  --sunlit-clay: #f2bc79ff;
-  --salmon: #f2856dff;
+  /* Brand palette: update these to reskin the site. */
+  --brand-primary: #3e5f82;
+  --brand-accent: #dfa700;
+  --brand-warm: #d6882c;
+  --brand-rose: #cb5a51;
+  --brand-violet: #a076db;
+  --brand-sky: #148fcb;
+  --brand-teal: #42ab9b;
 
-  --bright-lavender-100: rgba(186, 145, 242, 0.08);
-  --bright-lavender-200: rgba(186, 145, 242, 0.16);
-  --bright-lavender-300: rgba(186, 145, 242, 0.24);
+  /* Theme aliases used across components */
+  --ocean-blue: var(--brand-primary);
+  --bright-lavender: var(--brand-violet);
+  --celadon: var(--brand-teal);
+  --sunlit-clay: var(--brand-accent);
+  --salmon: var(--brand-rose);
 
-  --ocean-blue-100: rgba(27, 138, 191, 0.08);
-  --ocean-blue-200: rgba(27, 138, 191, 0.16);
-  --ocean-blue-300: rgba(27, 138, 191, 0.24);
+  --service-recruiting: var(--brand-sky);
+  --service-proposals: var(--brand-violet);
+  --service-development: var(--brand-teal);
 
-  --celadon-100: rgba(119, 217, 171, 0.08);
-  --celadon-200: rgba(119, 217, 171, 0.16);
-  --celadon-300: rgba(119, 217, 171, 0.24);
+  /* Derived tints (keep alpha in one place) */
+  --bright-lavender-100: color-mix(in srgb, var(--bright-lavender) 8%, transparent);
+  --bright-lavender-200: color-mix(in srgb, var(--bright-lavender) 16%, transparent);
+  --bright-lavender-300: color-mix(in srgb, var(--bright-lavender) 24%, transparent);
 
-  --sunlit-clay-100: rgba(242, 188, 121, 0.08);
-  --sunlit-clay-200: rgba(242, 188, 121, 0.16);
-  --sunlit-clay-300: rgba(242, 188, 121, 0.24);
+  --ocean-blue-100: color-mix(in srgb, var(--ocean-blue) 8%, transparent);
+  --ocean-blue-200: color-mix(in srgb, var(--ocean-blue) 16%, transparent);
+  --ocean-blue-300: color-mix(in srgb, var(--ocean-blue) 24%, transparent);
 
-  --salmon-100: rgba(242, 133, 109, 0.08);
-  --salmon-200: rgba(242, 133, 109, 0.16);
-  --salmon-300: rgba(242, 133, 109, 0.24);
+  --celadon-100: color-mix(in srgb, var(--celadon) 8%, transparent);
+  --celadon-200: color-mix(in srgb, var(--celadon) 16%, transparent);
+  --celadon-300: color-mix(in srgb, var(--celadon) 24%, transparent);
+
+  --sunlit-clay-100: color-mix(in srgb, var(--sunlit-clay) 8%, transparent);
+  --sunlit-clay-200: color-mix(in srgb, var(--sunlit-clay) 16%, transparent);
+  --sunlit-clay-300: color-mix(in srgb, var(--sunlit-clay) 24%, transparent);
+
+  --salmon-100: color-mix(in srgb, var(--salmon) 8%, transparent);
+  --salmon-200: color-mix(in srgb, var(--salmon) 16%, transparent);
+  --salmon-300: color-mix(in srgb, var(--salmon) 24%, transparent);
+  --salmon-20: color-mix(in srgb, var(--salmon) 20%, transparent);
+
+  --ocean-blue-04: color-mix(in srgb, var(--ocean-blue) 4%, transparent);
+  --ocean-blue-06: color-mix(in srgb, var(--ocean-blue) 6%, transparent);
+  --ocean-blue-12: color-mix(in srgb, var(--ocean-blue) 12%, transparent);
+  --ocean-blue-15: color-mix(in srgb, var(--ocean-blue) 15%, transparent);
+  --ocean-blue-25: color-mix(in srgb, var(--ocean-blue) 25%, transparent);
+  --ocean-blue-30: color-mix(in srgb, var(--ocean-blue) 30%, transparent);
+  --ocean-blue-50: color-mix(in srgb, var(--ocean-blue) 50%, transparent);
+  --ocean-blue-95: color-mix(in srgb, var(--ocean-blue) 95%, transparent);
+
+  --bright-lavender-10: color-mix(in srgb, var(--bright-lavender) 10%, transparent);
+  --bright-lavender-12: color-mix(in srgb, var(--bright-lavender) 12%, transparent);
+  --bright-lavender-14: color-mix(in srgb, var(--bright-lavender) 14%, transparent);
+  --bright-lavender-50: color-mix(in srgb, var(--bright-lavender) 50%, transparent);
+
+  --celadon-06: color-mix(in srgb, var(--celadon) 6%, transparent);
+  --celadon-10: color-mix(in srgb, var(--celadon) 10%, transparent);
+  --celadon-12: color-mix(in srgb, var(--celadon) 12%, transparent);
+  --celadon-50: color-mix(in srgb, var(--celadon) 50%, transparent);
+
+  --brand-sky-10: color-mix(in srgb, var(--brand-sky) 10%, transparent);
+  --brand-sky-20: color-mix(in srgb, var(--brand-sky) 20%, transparent);
+  --brand-sky-50: color-mix(in srgb, var(--brand-sky) 50%, transparent);
 
   --custom-scroll-thumb: linear-gradient(
     to bottom,

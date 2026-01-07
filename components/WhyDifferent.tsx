@@ -39,7 +39,7 @@ export const WhyDifferent: React.FC = () => {
                 <ScrollReveal>
                     <div className="text-center mb-16">
                         <h2 className="text-3xl md:text-4xl font-bold mb-6">What Makes Purely Works Different</h2>
-                        <div className="w-20 h-1 bg-indigo-500 mx-auto rounded-full"></div>
+                        <div className="w-20 h-1 bg-[color:var(--sunlit-clay)] mx-auto rounded-full"></div>
                     </div>
                 </ScrollReveal>
 
@@ -47,7 +47,7 @@ export const WhyDifferent: React.FC = () => {
                     {features.map((f, i) => (
                         <ScrollReveal key={i} delay={i * 100} className="h-full">
                             <div className="bg-slate-800/50 border border-slate-700/50 p-8 rounded-2xl hover:bg-slate-800 transition-all hover:-translate-y-1 group h-full flex flex-col">
-                                <div className="w-12 h-12 bg-slate-700 rounded-xl flex items-center justify-center text-indigo-400 mb-6 shrink-0 group-hover:scale-110 transition-transform group-hover:bg-indigo-500/20 group-hover:text-indigo-300">
+                                <div className="w-12 h-12 bg-slate-700 rounded-xl flex items-center justify-center text-[color:var(--brand-sky)] mb-6 shrink-0 group-hover:scale-110 transition-transform group-hover:bg-[color:var(--brand-sky-20)] group-hover:text-[color:var(--brand-sky)]">
                                     {f.icon}
                                 </div>
                                 <h3 className="text-xl font-bold mb-0 min-h-[3.5rem]">{f.title}</h3>
@@ -60,12 +60,12 @@ export const WhyDifferent: React.FC = () => {
                     
                     {/* Highlight Card */}
                     <ScrollReveal delay={500} className="h-full">
-                        <div className="bg-gradient-to-br from-indigo-600 to-purple-700 p-8 rounded-2xl h-full flex flex-col">
+                        <div className="bg-gradient-to-br from-[color:var(--brand-sky)] to-[color:var(--bright-lavender)] p-8 rounded-2xl h-full flex flex-col">
                             <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center text-white/90 mb-6 shrink-0">
                                 <Globe />
                             </div>
                             <h3 className="text-xl font-bold mb-0 min-h-[3.5rem]">Remote-First.</h3>
-                            <p className="text-indigo-100 leading-relaxed flex-1">
+                            <p className="text-white/80 leading-relaxed flex-1">
                                 Asynchronous documentation, time zone advantages, and distributed talent access are features, not bugs.
                             </p>
                         </div>

@@ -133,7 +133,7 @@ export const InteractiveAllocator: React.FC = () => {
 
             {/* Description Panel */}
             <div className="w-full md:w-1/2 space-y-6">
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs font-bold uppercase tracking-wider">
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-[color:var(--ocean-blue-100)] text-[color:var(--ocean-blue)] rounded-full text-xs font-bold uppercase tracking-wider">
                     Active Focus
                 </div>
                 <h3 className="text-3xl font-bold text-slate-900">{currentScenario.title}</h3>
@@ -142,21 +142,21 @@ export const InteractiveAllocator: React.FC = () => {
                 </p>
                 
                 <div className="space-y-4 pt-4 border-t border-slate-200">
-                    <div className={`flex items-center justify-between p-3 rounded-lg ${currentScenario.allocation.recruiting > 40 ? 'border' : 'opacity-50 grayscale'}`} style={currentScenario.allocation.recruiting > 40 ? { backgroundColor: 'rgba(27,138,191,0.06)', borderColor: 'rgba(27,138,191,0.12)' } : undefined}>
+                    <div className={`flex items-center justify-between p-3 rounded-lg ${currentScenario.allocation.recruiting > 40 ? 'border' : 'opacity-50 grayscale'}`} style={currentScenario.allocation.recruiting > 40 ? { backgroundColor: 'var(--ocean-blue-06)', borderColor: 'var(--ocean-blue-12)' } : undefined}>
                       <div className="flex items-center gap-3">
                         <Users size={18} style={{ color: 'var(--ocean-blue)' }} />
                         <span className="font-medium text-slate-700">Recruiting</span>
                       </div>
                       <div className="font-bold text-slate-900">{currentScenario.allocation.recruiting}%</div>
                     </div>
-                    <div className={`flex items-center justify-between p-3 rounded-lg ${currentScenario.allocation.proposals > 40 ? 'border' : 'opacity-50 grayscale'}`} style={currentScenario.allocation.proposals > 40 ? { backgroundColor: 'rgba(186,145,242,0.08)', borderColor: 'rgba(186,145,242,0.14)' } : undefined}>
+                    <div className={`flex items-center justify-between p-3 rounded-lg ${currentScenario.allocation.proposals > 40 ? 'border' : 'opacity-50 grayscale'}`} style={currentScenario.allocation.proposals > 40 ? { backgroundColor: 'var(--bright-lavender-100)', borderColor: 'var(--bright-lavender-14)' } : undefined}>
                       <div className="flex items-center gap-3">
                         <FileText size={18} style={{ color: 'var(--bright-lavender)' }} />
                         <span className="font-medium text-slate-700">Proposals</span>
                       </div>
                       <div className="font-bold text-slate-900">{currentScenario.allocation.proposals}%</div>
                     </div>
-                    <div className={`flex items-center justify-between p-3 rounded-lg ${currentScenario.allocation.development > 40 ? 'border' : 'opacity-50 grayscale'}`} style={currentScenario.allocation.development > 40 ? { backgroundColor: 'rgba(119,217,171,0.06)', borderColor: 'rgba(119,217,171,0.12)' } : undefined}>
+                    <div className={`flex items-center justify-between p-3 rounded-lg ${currentScenario.allocation.development > 40 ? 'border' : 'opacity-50 grayscale'}`} style={currentScenario.allocation.development > 40 ? { backgroundColor: 'var(--celadon-06)', borderColor: 'var(--celadon-12)' } : undefined}>
                        <div className="flex items-center gap-3">
                         <Code2 size={18} style={{ color: 'var(--celadon)' }} />
                         <span className="font-medium text-slate-700">Development</span>

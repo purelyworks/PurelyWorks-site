@@ -11,7 +11,7 @@ export const Hero: React.FC = () => {
   const generateHeroImage = async () => {
     setIsLoading(true);
     // Prompt designed for Nano Banana (Gemini Flash Image)
-    const prompt = "A highly artistic, photorealistic corporate abstract representation of fluid team dynamics. Glass geometric shapes morphing, connected by glowing data lines, warm professional lighting, depth of field, corporate blue and violet color palette, minimal, clean, 8k resolution.";
+    const prompt = "A highly artistic, photorealistic corporate abstract representation of fluid team dynamics. Glass geometric shapes morphing, connected by glowing data lines, warm professional lighting, depth of field, steel-blue and warm-gold palette with soft violet accents, minimal, clean, 8k resolution.";
     
     const image = await generateNanoImage(prompt);
     if (image) {
@@ -37,13 +37,13 @@ export const Hero: React.FC = () => {
                     style={{ backgroundImage: `url(${bgImage})` }}
                 />
             ) : (
-                <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 to-slate-100 opacity-50" />
+                <div className="absolute inset-0 bg-gradient-to-br from-[color:var(--ocean-blue-100)] to-[color:var(--celadon-100)] opacity-50" />
             )}
              <div className="absolute inset-0 bg-gradient-to-b from-white/0 via-white/60 to-slate-50" />
         </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium mb-8 animate-fade-in-up" style={{ backgroundColor: 'rgba(186,145,242,0.12)', color: 'var(--bright-lavender)' }}>
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium mb-8 animate-fade-in-up" style={{ backgroundColor: 'var(--bright-lavender-12)', color: 'var(--bright-lavender)' }}>
           <Sparkles size={16} />
           <span>Bandwidth that shifts with your priorities</span>
         </div>
@@ -75,7 +75,7 @@ export const Hero: React.FC = () => {
             <button 
                 onClick={generateHeroImage}
                 disabled={isLoading}
-                className="text-xs text-slate-400 hover:text-indigo-500 flex items-center gap-1 transition-colors"
+                className="text-xs text-slate-400 hover:text-[color:var(--ocean-blue)] flex items-center gap-1 transition-colors"
             >
                 <Sparkles size={12} />
                 {isLoading ? "Dreaming up a new background..." : "Refresh Visuals with AI"}

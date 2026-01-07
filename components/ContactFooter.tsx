@@ -11,8 +11,8 @@ export const ContactFooter: React.FC = () => {
     <footer className="bg-slate-900 text-white py-24 border-t border-slate-800 relative overflow-hidden">
       {/* Background Accents */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full blur-3xl" style={{ backgroundColor: 'rgba(27,138,191,0.12)' }} />
-        <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full blur-3xl" style={{ backgroundColor: 'rgba(119,217,171,0.06)' }} />
+        <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full blur-3xl" style={{ backgroundColor: 'var(--ocean-blue-12)' }} />
+        <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full blur-3xl" style={{ backgroundColor: 'var(--celadon-06)' }} />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -40,7 +40,7 @@ export const ContactFooter: React.FC = () => {
           {/* Right Column: CTA Card */}
           <div className="bg-slate-800 rounded-3xl p-2 border border-slate-700 shadow-2xl hover:scale-[1.02] transition-transform duration-300">
             <div className="bg-slate-900 rounded-2xl p-10 text-center flex flex-col items-center justify-center min-h-[320px]">
-                <div className="w-20 h-20 rounded-full flex items-center justify-center mb-6 shadow-lg" style={{ backgroundColor: 'var(--ocean-blue)', boxShadow: '0 10px 30px -10px rgba(27,138,191,0.3)' }}>
+                <div className="w-20 h-20 rounded-full flex items-center justify-center mb-6 shadow-lg" style={{ backgroundColor: 'var(--ocean-blue)', boxShadow: '0 10px 30px -10px var(--ocean-blue-30)' }}>
                   <ArrowRight size={32} className="text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-4">Let's Get Started</h3>

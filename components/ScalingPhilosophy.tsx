@@ -17,8 +17,8 @@ const stages = [
             "Build trust & rhythms",
             "Keep costs contained"
         ],
-        color: "bg-indigo-500",
-        textColor: "text-indigo-600"
+        colorVar: "var(--brand-sky)",
+        softVar: "var(--brand-sky-10)"
     },
     {
         id: 2,
@@ -32,8 +32,8 @@ const stages = [
             "Example: Focused Recruiting + Flex Dev",
             "Scale where ROI is proven"
         ],
-        color: "bg-purple-500",
-        textColor: "text-purple-600"
+        colorVar: "var(--bright-lavender)",
+        softVar: "var(--bright-lavender-10)"
     },
     {
         id: 3,
@@ -47,8 +47,8 @@ const stages = [
             "Custom Tech Advantage",
             "Flex as strategic backup"
         ],
-        color: "bg-emerald-500",
-        textColor: "text-emerald-600"
+        colorVar: "var(--celadon)",
+        softVar: "var(--celadon-10)"
     }
 ];
 
@@ -66,7 +66,10 @@ export const ScalingPhilosophy: React.FC = () => {
                 <div className="relative">
                     {/* Connection Line (Desktop) */}
                     <div className="hidden lg:block absolute top-24 left-0 right-0 h-1 bg-slate-100 -z-10">
-                         <div className="absolute top-0 left-0 h-full bg-gradient-to-r from-indigo-500 via-purple-500 to-emerald-500 opacity-20"></div>
+                         <div
+                           className="absolute top-0 left-0 h-full opacity-20"
+                           style={{ backgroundImage: 'linear-gradient(to right, var(--brand-sky), var(--bright-lavender), var(--celadon))' }}
+                         ></div>
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-stretch">
@@ -74,7 +77,10 @@ export const ScalingPhilosophy: React.FC = () => {
                             <ScrollReveal key={stage.id} delay={idx * 200} className="h-full">
                                 <div className="relative group h-full flex flex-col">
                                     {/* Timeline Dot */}
-                                    <div className={`hidden lg:flex w-12 h-12 mx-auto mb-8 rounded-full ${stage.color} text-white items-center justify-center shadow-lg z-10 relative group-hover:scale-110 transition-transform duration-300`}>
+                                    <div
+                                      className="hidden lg:flex w-12 h-12 mx-auto mb-8 rounded-full text-white items-center justify-center shadow-lg z-10 relative group-hover:scale-110 transition-transform duration-300"
+                                      style={{ backgroundColor: stage.colorVar }}
+                                    >
                                         <span className="font-bold">{stage.id}</span>
                                     </div>
 
@@ -85,7 +91,7 @@ export const ScalingPhilosophy: React.FC = () => {
                                         </div>
                                         
                                         <div className="flex items-center justify-between mb-4">
-                                        <div className={`p-3 rounded-xl ${stage.color} bg-opacity-10 ${stage.textColor}`}>
+                                        <div className="p-3 rounded-xl" style={{ backgroundColor: stage.softVar, color: stage.colorVar }}>
                                             {stage.icon}
                                         </div>
                                             <span className="text-xs font-bold uppercase tracking-widest text-slate-400">{stage.period}</span>
@@ -97,7 +103,7 @@ export const ScalingPhilosophy: React.FC = () => {
                                         <ul className="space-y-3 flex-1">
                                             {stage.points.map((p, i) => (
                                                 <li key={i} className="flex items-start gap-3 text-slate-600 text-sm leading-relaxed">
-                                                    <span className={`mt-1.5 w-1.5 h-1.5 rounded-full ${stage.color}`}></span>
+                                                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full" style={{ backgroundColor: stage.colorVar }}></span>
                                                     {p}
                                                 </li>
                                             ))}

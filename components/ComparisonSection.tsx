@@ -15,9 +15,9 @@ export const ComparisonSection: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
           
           {/* Traditional */}
-           <div className="bg-slate-800 rounded-3xl p-8 border border-slate-700 relative overflow-hidden group">
+             <div className="bg-slate-800 rounded-3xl p-8 border border-slate-700 relative overflow-hidden group">
              <div className="absolute top-0 right-0 p-8 opacity-10">
-               <XCircle size={120} style={{ color: 'rgba(255,99,71,0.2)' }} />
+               <XCircle size={120} style={{ color: 'var(--salmon-20)' }} />
              </div>
             <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
               <span className="bg-red-500/20 text-red-400 p-2 rounded-lg"><XCircle size={24} /></span>
@@ -66,12 +66,12 @@ export const ComparisonSection: React.FC = () => {
           </div>
 
           {/* Purely Flex */}
-          <div className="rounded-3xl p-8 border relative overflow-hidden shadow-2xl" style={{ background: 'linear-gradient(135deg, rgba(27,138,191,0.95), rgba(17,24,39,0.95))', borderColor: 'rgba(27,138,191,0.15)', boxShadow: '0 20px 60px rgba(27,138,191,0.08)' }}>
+          <div className="rounded-3xl p-8 border relative overflow-hidden shadow-2xl" style={{ background: 'linear-gradient(135deg, var(--ocean-blue-95), rgba(17,24,39,0.95))', borderColor: 'var(--ocean-blue-15)', boxShadow: '0 20px 60px var(--ocean-blue-100)' }}>
             <div className="absolute top-0 right-0 p-8 opacity-10">
                 <CheckCircle size={120} />
              </div>
             <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
-              <span className="p-2 rounded-lg" style={{ backgroundColor: 'rgba(186,145,242,0.08)', color: 'var(--bright-lavender)' }}><CheckCircle size={24} /></span>
+              <span className="p-2 rounded-lg" style={{ backgroundColor: 'var(--bright-lavender-100)', color: 'var(--bright-lavender)' }}><CheckCircle size={24} /></span>
               Purely Flex
             </h3>
 
@@ -80,10 +80,10 @@ export const ComparisonSection: React.FC = () => {
                 Access to specialized teams across all three domains, with bandwidth that flexes to match your actual needs.
                </p>
 
-               <div className="p-6 rounded-xl border" style={{ backgroundColor: 'rgba(17,24,39,0.6)', borderColor: 'rgba(27,138,191,0.12)' }}>
+               <div className="p-6 rounded-xl border" style={{ backgroundColor: 'rgba(17,24,39,0.6)', borderColor: 'var(--ocean-blue-12)' }}>
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-sm uppercase font-bold tracking-wider" style={{ color: 'var(--bright-lavender)' }}>Active Capacity</span>
-                    <span className="text-xs font-bold px-2 py-1 rounded-full" style={{ backgroundColor: 'rgba(119,217,171,0.12)', color: 'var(--celadon)' }}>100% UTILIZATION</span>
+                    <span className="text-xs font-bold px-2 py-1 rounded-full" style={{ backgroundColor: 'var(--celadon-12)', color: 'var(--celadon)' }}>100% UTILIZATION</span>
                   </div>
                   {/* Visualization of fluid capacity */}
                   <div className="flex h-12 gap-1">
@@ -96,7 +96,7 @@ export const ComparisonSection: React.FC = () => {
 
                <div className="pt-4 border-t border-slate-700/50">
                 <p className="text-xl font-bold text-white">Pay only for active capacity</p>
-                <p className="text-sm text-emerald-400">No hiring. No training. No idle resources.</p>
+                <p className="text-sm text-[color:var(--celadon)]">No hiring. No training. No idle resources.</p>
               </div>
             </div>
           </div>

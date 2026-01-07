@@ -90,7 +90,7 @@ export const Navigation: React.FC<NavigationProps> = ({ currentPage, onNavigate 
                 className={`text-sm font-medium transition-all flex items-center gap-1 ${
                   isActive 
                     ? 'font-bold' 
-                    : 'text-slate-600 hover:text-indigo-600'
+                    : 'text-slate-600 hover:text-[color:var(--ocean-blue)]'
                 }`}
               >
                 <span style={isActive ? theme.textStyle : {}}>{item.label}</span>
@@ -103,7 +103,7 @@ export const Navigation: React.FC<NavigationProps> = ({ currentPage, onNavigate 
             <button
               onClick={openLeadCapture}
               className="text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-slate-800 transition-all shadow-lg hover:shadow-xl flex items-center gap-2 group"
-              style={{ backgroundColor: '#0f172a' }} // Slate 900
+              style={{ backgroundColor: 'var(--ocean-blue)' }}
             >
               Let's Talk <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
             </button>

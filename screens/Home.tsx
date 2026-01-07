@@ -19,7 +19,7 @@ export const Home: React.FC = () => {
 
   useEffect(() => {
     const init = async () => {
-       const img = await generateNanoImage("Abstract minimalist architectural glass structure, white and indigo lighting, 8k resolution, futuristic agency headquarters");
+       const img = await generateNanoImage("Abstract minimalist architectural glass structure, white and steel-blue lighting with warm gold accents, 8k resolution, futuristic agency headquarters");
        if (img) setBgImage(img);
     };
     if (process.env.NEXT_PUBLIC_GEMINI_ENABLED === 'true') init();
@@ -32,17 +32,17 @@ export const Home: React.FC = () => {
          <div className="absolute inset-0 z-0">
             {bgImage && (
                 <div 
-                    className="absolute inset-0 bg-cover bg-center opacity-10 animate-fade-in"
+                    className="absolute inset-0 bg-cover bg-center opacity-[0.06] animate-fade-in"
                     style={{ backgroundImage: `url(${bgImage})` }}
                 />
             )}
-            <div className="absolute inset-0 bg-gradient-to-b from-white via-white/50 to-slate-50" />
+            <div className="absolute inset-0 bg-gradient-to-b from-white via-white/85 to-white" />
          </div>
 
          <div className="relative z-10 max-w-5xl mx-auto text-center">
             <ScrollReveal>
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-white text-xs font-bold tracking-widest uppercase mb-8" style={{ backgroundColor: 'var(--sunlit-clay)' }}>
-                    <Zap size={12} style={{ color: 'var(--sunlit-clay)' }} />
+                    <Zap size={12} style={{ color: 'var(--brand-warm)' }} />
                     The Future of Work
                 </div>
             </ScrollReveal>
@@ -57,7 +57,7 @@ export const Home: React.FC = () => {
             </ScrollReveal>
 
             <ScrollReveal delay={200}>
-                <p className="text-xl md:text-2xl text-slate-500 max-w-3xl mx-auto mb-12 font-light leading-relaxed">
+                <p className="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto mb-12 font-light leading-relaxed">
                     Purely Works fuses <strong>Elite Talent</strong> with <strong>AI Workflows</strong>. 
                     We don't just staff; we engineer outcomes across Development, Recruiting, and Proposals.
                 </p>
@@ -68,7 +68,7 @@ export const Home: React.FC = () => {
                     <button 
                         onClick={() => handleNavigate('/purely-flex')}
                         className="w-full sm:w-auto px-8 py-5 text-white rounded-2xl font-bold text-lg transition-all shadow-xl flex items-center justify-center gap-2 group"
-                        style={{ backgroundColor: 'var(--ocean-blue)', boxShadow: '0 10px 25px -10px rgba(27,138,191,0.25)' }}
+                        style={{ backgroundColor: 'var(--ocean-blue)', boxShadow: '0 10px 25px -10px var(--ocean-blue-25)' }}
                     >
                         Start with Purely Flex <ArrowRight className="group-hover:translate-x-1 transition-transform" />
                     </button>
@@ -118,51 +118,51 @@ export const Home: React.FC = () => {
                 {/* Focused Teams Overview */}
                 <ScrollReveal delay={200}>
                     <div className="rounded-3xl bg-slate-900 text-white p-10 relative overflow-hidden h-full border border-slate-800 flex flex-col">
-                        <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/50 to-slate-900"></div>
+                        <div className="absolute inset-0 bg-gradient-to-br from-[color:var(--ocean-blue-50)] to-slate-900"></div>
                         <div className="relative z-10 h-full flex flex-col">
                             <h3 className="text-3xl font-bold mb-2">Focused Teams</h3>
                             <p className="text-slate-400 mb-8">Dedicated capacity for high-volume needs.</p>
                             <div className="space-y-4 flex-grow">
                                 <button 
                                     onClick={() => handleNavigate('/focused-development')}
-                                    className="w-full p-6 rounded-xl bg-slate-800/50 border border-slate-700 hover:bg-slate-800 hover:border-emerald-500/50 transition-all flex items-center gap-4 group"
+                                    className="w-full p-6 rounded-xl bg-slate-800/50 border border-slate-700 hover:bg-slate-800 hover:border-[color:var(--celadon-50)] transition-all flex items-center gap-4 group"
                                 >
-                                    <div className="p-3 rounded-lg bg-emerald-500/10 text-emerald-400">
+                                    <div className="p-3 rounded-lg bg-[color:var(--celadon-10)] text-[color:var(--celadon)]">
                                         <Code2 size={24} />
                                     </div>
                                     <div className="text-left">
-                                        <h4 className="font-bold text-lg group-hover:text-emerald-400 transition-colors">Development</h4>
+                                        <h4 className="font-bold text-lg group-hover:text-[color:var(--celadon)] transition-colors">Development</h4>
                                         <p className="text-sm text-slate-400">High-velocity engineering pods</p>
                                     </div>
-                                    <ArrowRight className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-emerald-400" />
+                                    <ArrowRight className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-[color:var(--celadon)]" />
                                 </button>
 
                                 <button 
                                     onClick={() => handleNavigate('/focused-recruiting')}
-                                    className="w-full p-6 rounded-xl bg-slate-800/50 border border-slate-700 hover:bg-slate-800 hover:border-blue-500/50 transition-all flex items-center gap-4 group"
+                                    className="w-full p-6 rounded-xl bg-slate-800/50 border border-slate-700 hover:bg-slate-800 hover:border-[color:var(--brand-sky-50)] transition-all flex items-center gap-4 group"
                                 >
-                                    <div className="p-3 rounded-lg bg-blue-500/10 text-blue-400">
+                                    <div className="p-3 rounded-lg bg-[color:var(--brand-sky-10)] text-[color:var(--brand-sky)]">
                                         <Users size={24} />
                                     </div>
                                     <div className="text-left">
-                                        <h4 className="font-bold text-lg group-hover:text-blue-400 transition-colors">Recruiting</h4>
+                                        <h4 className="font-bold text-lg group-hover:text-[color:var(--brand-sky)] transition-colors">Recruiting</h4>
                                         <p className="text-sm text-slate-400">Pipeline-as-a-Service</p>
                                     </div>
-                                    <ArrowRight className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-blue-400" />
+                                    <ArrowRight className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-[color:var(--brand-sky)]" />
                                 </button>
 
                                 <button 
                                     onClick={() => handleNavigate('/focused-proposals')}
-                                    className="w-full p-6 rounded-xl bg-slate-800/50 border border-slate-700 hover:bg-slate-800 hover:border-purple-500/50 transition-all flex items-center gap-4 group"
+                                    className="w-full p-6 rounded-xl bg-slate-800/50 border border-slate-700 hover:bg-slate-800 hover:border-[color:var(--bright-lavender-50)] transition-all flex items-center gap-4 group"
                                 >
-                                    <div className="p-3 rounded-lg bg-purple-500/10 text-purple-400">
+                                    <div className="p-3 rounded-lg bg-[color:var(--bright-lavender-10)] text-[color:var(--bright-lavender)]">
                                         <FileText size={24} />
                                     </div>
                                     <div className="text-left">
-                                        <h4 className="font-bold text-lg group-hover:text-purple-400 transition-colors">Proposals</h4>
+                                        <h4 className="font-bold text-lg group-hover:text-[color:var(--bright-lavender)] transition-colors">Proposals</h4>
                                         <p className="text-sm text-slate-400">Winning bid management</p>
                                     </div>
-                                    <ArrowRight className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-purple-400" />
+                                    <ArrowRight className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity text-[color:var(--bright-lavender)]" />
                                 </button>
                             </div>
                         </div>

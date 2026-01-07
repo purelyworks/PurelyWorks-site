@@ -76,7 +76,7 @@ export const AppShell: React.FC<{ children: React.ReactNode }> = ({ children }) 
 
   return (
     <LeadCaptureProvider>
-      <div className="min-h-screen w-full overflow-x-hidden bg-slate-50 font-sans text-slate-900 selection:bg-indigo-100 selection:text-indigo-900">
+      <div className="min-h-screen w-full overflow-x-hidden bg-slate-50 font-sans text-slate-900 selection:bg-[color:var(--ocean-blue-100)] selection:text-[color:var(--ocean-blue)]">
         <Navigation currentPage={currentPage} onNavigate={handleNavigate} />
 
         <main>{children}</main>
