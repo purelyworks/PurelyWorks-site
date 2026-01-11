@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { X, Hammer, Trophy, ArrowUp, ArrowDown, ArrowLeft, ArrowRight, AlertCircle, Play } from 'lucide-react';
+import { submitToHubSpot, upsertHubSpotContact } from '../services/hubspotService';
 
 // --- GAME CONSTANTS ---
 const TILE_SIZE = 30;
@@ -540,9 +541,27 @@ export const MoleEasterEgg: React.FC = () => {
       };
   }, [gameState]);
 
+  const syncHubSpotContact = async (contactEmail: string, contactName: string) => {
+      const trimmedEmail = contactEmail.trim();
+      const trimmedName = contactName.trim();
+      if (!trimmedEmail || !trimmedName) return;
+
+      const nameParts = trimmedName.split(/\s+/);
+      const firstname = nameParts[0];
+      const lastname = nameParts.length > 1 ? nameParts.slice(1).join(' ') : undefined;
+
+      const upsertResult = await upsertHubSpotContact({ email: trimmedEmail, firstname, lastname });
+      if (!upsertResult) {
+        await submitToHubSpot({ email: trimmedEmail, firstname, lastname });
+      }
+  };
+
   const handleSubmitScore = (e: React.FormEvent) => {
       e.preventDefault();
       if (!initials || !fullName || !email) return;
+
+      const contactEmail = email;
+      const contactName = fullName;
       
       const newScores = [...highScores, { name: initials, score: scoreRef.current }];
       newScores.sort((a,b) => b.score - a.score);
@@ -551,6 +570,7 @@ export const MoleEasterEgg: React.FC = () => {
       setInitials('');
       setFullName('');
       setEmail('');
+      void syncHubSpotContact(contactEmail, contactName);
   };
 
 
