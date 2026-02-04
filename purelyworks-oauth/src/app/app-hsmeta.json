@@ -10,7 +10,8 @@
       "redirectUrls": [
         "http://localhost:3000/api/hubspot/callback",
         "https://purelyworks-site.vercel.app/api/hubspot/callback",
-        "https://ixnmnmqyewrrvlscmulw.supabase.co/functions/v1/crm_oauth_callback"
+        "https://ixnmnmqyewrrvlscmulw.supabase.co/functions/v1/crm_oauth_callback",
+        "http://localhost:4001/integrations/hubspot/oauth/callback"
       ],
       "requiredScopes": [
         "crm.objects.contacts.read",
