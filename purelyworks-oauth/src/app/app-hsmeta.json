@@ -16,7 +16,6 @@
       "requiredScopes": [
         "crm.objects.contacts.read",
         "crm.objects.contacts.write",
-        "crm.objects.notes.write",
         "files",
         "crm.objects.companies.read",
         "crm.objects.companies.write",
